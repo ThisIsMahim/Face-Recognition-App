@@ -103,6 +103,12 @@ const checkFaceApiLoaded = () => {
     }
   
     loadingBarContainer.style.display = "none";
+    alert("ZIP created successfully");
+    
+    if (matchingImages.length > 0) {
+      document.getElementById("downloadZip").style.display = "block";
+    }
+  
     return matchingImages;
   };
   
@@ -140,8 +146,16 @@ const checkFaceApiLoaded = () => {
         }
         const matchingImages = await handleZipUpload(faceMatcher);
         const zipFileName = document.getElementById("zipFileName").value || "matching_images";
+        // downloadMatchingImages(matchingImages, zipFileName);
+      });
+  
+      document.getElementById("downloadZip").style.display = "none";
+      document.getElementById("downloadZip").addEventListener("click", async () => {
+        const matchingImages = await handleZipUpload(faceMatcher);
+        const zipFileName = document.getElementById("zipFileName").value || "matching_images";
         downloadMatchingImages(matchingImages, zipFileName);
       });
+  
     } catch (error) {
       console.error("Error in face detection:", error);
     }

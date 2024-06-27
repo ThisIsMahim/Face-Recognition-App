@@ -2,11 +2,14 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: auto;
+  background: #33333333;
   top: 0;
   left: 0;
   padding: 30px 60px;
   box-sizing: border-box;
+  border-radius: 0 0 100px 100px ;
+
 }
 
 .menu-icon-container svg {
@@ -19,8 +22,8 @@
   background: rgb(238, 174, 202);
   background: radial-gradient(
     circle,
-    rgb(220, 103, 103) 0%,
-    rgb(107, 128, 199) 45%,
+    #672a2a7d 5%,
+    rgba(121, 123, 132, 0.594) 40%,
     rgb(177, 181, 181) 100%
   );
   transform-origin: center center;
@@ -32,7 +35,7 @@
 .logo{
     font-size: 30px;
     font-weight: 900;
-    color: #d62828;
+    color:#ff0000;
     font-family: "Roboto", sans-serif;
 }
 .menu-container .logo {
@@ -94,4 +97,165 @@
 .menu-container .menu-items a:hover::after {
   opacity: 0.1;
   transform: translate(-50%, -50%);
+}
+
+body {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(315deg, rgba(101,0,94,.2) 3%, rgba(60,132,206,.2) 38%, rgba(48,238,226.2) 68%, rgba(255,25,25,.2) 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 100% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+      transform: translateX(1);
+  }
+
+  25% {
+      transform: translateX(-25%);
+  }
+
+  50% {
+      transform: translateX(-50%);
+  }
+
+  75% {
+      transform: translateX(-25%);
+  }
+
+  100% {
+      transform: translateX(1);
+  }
+}
+/* Your existing CSS remains unchanged */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+.app-section {
+  padding: 80px 20px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.app-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.app-section p {
+  font-size: 1.2rem;
+  color: #333;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.app-section a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d62828;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.app-section a:hover {
+  background-color: #b71c1c;
+}
+
+footer {
+  background-color: #33333330;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 100px 100px 0 0px;
+}
+
+footer .contact-me {
+  max-width: 400px;
+  margin: 0 auto 30px;
+}
+
+footer .contact-me h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+footer .contact-me p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+footer .contact-me a {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+footer .contact-me a:hover {
+  opacity: 0.8;
+}
+
+footer .footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+footer .footer-menu a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+footer .footer-menu a:hover {
+  opacity: 0.8;
 }

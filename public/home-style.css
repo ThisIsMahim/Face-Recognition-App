@@ -123,9 +123,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(138, 220, 220, 0.2);
+  background:linear-gradient(360deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  animation: footer-animation 5s ease-in-out  infinite  ;
   border-radius: 16px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(239, 243, 243, 0.3);
   overflow: hidden;
@@ -177,33 +178,42 @@ body {
   transform: translateY(-5px);
   cursor: pointer;
   box-shadow: 1px 40px 30px rgba(111, 110, 110, 0.352);
+  background: rgba(81, 2, 2, 0.384);
+  border: 3px solid goldenrod;
 }
 
 .app-card:hover .app-image{
-  transition: all 1s ease;
-  transform: translateX(-100%);
-  animation: blink 2s ease-in-out .5s 1;
-  transition-delay: .5s;
+  transition: all 2s ease;
+  transform: translateX(-50%);
+  animation: blink 2s ease .3s 1;
+  transition-delay: .3s;
   z-index: -1;
+  filter: blur(50px);
 }
-/* create a blinking animation with keyframe*/
+
+.app-card:hover .app-info{
+  transition: all 2s ease;
+  transition-delay: .3s;
+  transform: translateX(50%);
+}
+.app-card:hover .app-info *{
+  color: white;
+  transition: all 2s ease .3s;
+  
+}
+
+
 
 @keyframes blink {
   0% {
     opacity: 1;
   }
   50% {
-    opacity: 0;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
   }
-}
-
-.app-card:hover .app-info{
-  transition: all 2s ease;
-  transition-delay: .5s;
-  transform: translateX(100%);
 }
 
 .app-info {
@@ -211,6 +221,9 @@ body {
   padding: 20px;
   text-align: left;
   transition: all.5s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .app-info h2 {
@@ -230,6 +243,7 @@ body {
   padding: 10px 20px;
   background-color: #d62828;
   color: #fff;
+  margin: auto;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -252,11 +266,36 @@ body {
 }
 
 footer {
-  background-color: #d628287e;
+  background:linear-gradient(360deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  animation: footer-animation 5s ease-in-out  infinite  ;
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   padding: 40px 20px;
   text-align: center;
   border-radius: 100px 100px 0 0px;
+  transition: all .3s;
+ 
+}
+@keyframes footer-animation {
+  0%{
+    background:linear-gradient(360deg,rgba(100, 143, 192, 0.521), rgba(104, 8, 8, 0.443));
+  }
+  25%{
+    background:linear-gradient(90deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  }
+  50%{
+    background:linear-gradient(180deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  }
+  75%{
+    background:linear-gradient(270deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  }
+  100%{
+    background:linear-gradient(360deg,rgba(100, 143, 192, 0.521) 50%, rgba(104, 8, 8, 0.443));
+  }
 }
 
 footer .contact-me {

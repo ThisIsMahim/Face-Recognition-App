@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-between;
   position: auto;
-  background: #33333333;
+  backdrop-filter: blur(50px);
   top: 0;
   left: 0;
   padding: 30px 60px;
   box-sizing: border-box;
-  border-radius: 0 0 100px 100px ;
-
+  border-bottom: 2px solid #ff0000;
+  border-radius: 0 0 100px 100px;
 }
 
 .menu-icon-container svg {
@@ -26,17 +26,24 @@
     rgba(121, 123, 132, 0.594) 40%,
     rgb(177, 181, 181) 100%
   );
+  
+  /* background: rgba(138, 220, 220, 0.2); */
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   transform-origin: center center;
   inset: 0;
   font-family: "Roboto", sans-serif;
   height: 0;
+  z-index: 1000;
   overflow: hidden;
 }
-.logo{
-    font-size: 30px;
-    font-weight: 900;
-    color:#ff0000;
-    font-family: "Roboto", sans-serif;
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ff0000;
+  font-family: "Roboto", sans-serif;
 }
 .menu-container .logo {
   transform: translateX(-30px);
@@ -98,76 +105,6 @@
   opacity: 0.1;
   transform: translate(-50%, -50%);
 }
-
-body {
-  margin: auto;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: auto;
-  background: linear-gradient(315deg, rgba(101,0,94,.2) 3%, rgba(60,132,206,.2) 38%, rgba(48,238,226.2) 68%, rgba(255,25,25,.2) 98%);
-  animation: gradient 15s ease infinite;
-  background-size: 400% 400%;
-  background-attachment: fixed;
-}
-
-@keyframes gradient {
-  0% {
-      background-position: 0% 0%;
-  }
-  50% {
-      background-position: 100% 100%;
-  }
-  100% {
-      background-position: 0% 0%;
-  }
-}
-
-.wave {
-  background: rgb(255 255 255 / 25%);
-  border-radius: 1000% 1000% 0 0;
-  position: fixed;
-  width: 200%;
-  height: 12em;
-  animation: wave 10s -3s linear infinite;
-  transform: translate3d(0, 0, 0);
-  opacity: 0.8;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.wave:nth-of-type(2) {
-  bottom: -1.25em;
-  animation: wave 18s linear reverse infinite;
-  opacity: 0.8;
-}
-
-.wave:nth-of-type(3) {
-  bottom: -2.5em;
-  animation: wave 20s -1s reverse infinite;
-  opacity: 0.9;
-}
-
-@keyframes wave {
-  2% {
-      transform: translateX(1);
-  }
-
-  25% {
-      transform: translateX(-25%);
-  }
-
-  50% {
-      transform: translateX(-50%);
-  }
-
-  75% {
-      transform: translateX(-25%);
-  }
-
-  100% {
-      transform: translateX(1);
-  }
-}
 /* Your existing CSS remains unchanged */
 
 body {
@@ -175,26 +112,120 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
 }
-
 .app-section {
   padding: 80px 20px;
   background-color: transparent;
   text-align: center;
+  z-index: -100;
 }
 
-.app-section h2 {
+.app-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(138, 220, 220, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(239, 243, 243, 0.3);
+  overflow: hidden;
+  transition: all .5s ease;
+  position: relative;
+}
+@media screen and (max-width: 778px) {
+  .app-card{
+    flex-direction: column;
+  } 
+  .app-card .app-info{
+    text-align: center;
+  }
+  .app-card .app-image{
+    height: 50vh;
+  }
+  .menu-icon-container{
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    border-radius: 0 0 50px 50px;
+  }
+  .menu-items{
+    text-align: center;
+  }
+  .menu-items a{
+    font-size: 10px;
+  }
+  .menu-container .content {
+    padding: 30px 10px;
+}
+.app-card:hover .app-image{
+  transform: translateY(-100%);
+  transform: translateX(0);
+}
+.app-card:hover .app-info{
+  transform: translateX(0);
+  transform: translateY(100%);
+}
+
+}
+.card-2{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+  box-shadow: 1px 40px 30px rgba(111, 110, 110, 0.352);
+}
+
+.app-card:hover .app-image{
+  transition: all 1s ease;
+  transform: translateX(-100%);
+  animation: blink 2s ease-in-out .5s 1;
+  transition-delay: .5s;
+  z-index: -1;
+}
+/* create a blinking animation with keyframe*/
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.app-card:hover .app-info{
+  transition: all 2s ease;
+  transition-delay: .5s;
+  transform: translateX(100%);
+}
+
+.app-info {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+  transition: all.5s ease;
+}
+
+.app-info h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.app-section p {
-  font-size: 1.2rem;
+  margin-bottom: 10px;
   color: #333;
-  max-width: 600px;
-  margin: 0 auto 30px;
 }
 
-.app-section a {
+.app-info p {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.app-info a {
   display: inline-block;
   padding: 10px 20px;
   background-color: #d62828;
@@ -204,12 +235,24 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.app-section a:hover {
+.app-info a:hover {
   background-color: #b71c1c;
 }
 
+.app-image {
+  flex: 1;
+  max-height: 80vh;
+  transition: all .5s ease;
+}
+.app-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
 footer {
-  background-color: #33333330;
+  background-color: #d628287e;
   color: #fff;
   padding: 40px 20px;
   text-align: center;

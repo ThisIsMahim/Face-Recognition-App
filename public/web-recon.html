@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="image-upload">
+      <div id="image-upload">
         <h4>Upload which person needs to be recognized:</h4>
         <input type="file" id="referenceImageUpload" />
       </div>
@@ -20,8 +20,9 @@
       <div id="face-matcher-failed" class="card card-2">
         <h4>No face detected in the uploaded image.</h4>
       </div>
-      <canvas id="canvas"></canvas>
-      <div id="container">  
+      <!-- canvas and videoEl -->
+      <div id="container"> 
+        <canvas id="canvas"></canvas> 
         <video id="video-feed" height="480px" width="640px" autoplay></video>
       </div>
       

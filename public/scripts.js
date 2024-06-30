@@ -75,9 +75,6 @@ const run = async () => {
       throw new Error("Element with id 'canvas' not found.");
     }
 
-    canvas.style.position = "absolute";
-    canvas.style.left = `${videoFeedEl.offsetLeft}px`;
-    canvas.style.top = `${videoFeedEl.offsetTop}px`;
     canvas.width = videoFeedEl.width;
     canvas.height = videoFeedEl.height;
     const loadingEl = document.getElementById("loading");

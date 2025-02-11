@@ -2,7 +2,7 @@
 
 Welcome to **FaceFusion**, a web application that allows users to register and log in using facial recognition. Built using **Face-API.js**, this system enables secure and seamless authentication through a webcam.
 
-## Features
+## Applications
 
 ### 1. **Face Registration and Login System** (Index Page)
 - **Face Registration:** Users register their faces, storing unique facial descriptors locally.
@@ -10,10 +10,32 @@ Welcome to **FaceFusion**, a web application that allows users to register and l
 - **Real-time Face Detection:** Uses **Face-API.js** to process and recognize faces in real time.
 - **Smooth Animations & UI:** Provides feedback and transitions to guide users through the login process.
 
-### 2. **ZIP Image Matching Tool**
-- **Reference Image Upload:** Users upload a reference face image.
-- **ZIP File Upload:** Users upload a ZIP containing multiple images.
-- **Face Matching & Extraction:** The app scans the ZIP, extracts images matching the reference face, and creates a new ZIP file for download.
+
+### 2. Face Recognition, Expression, and Gender Detection App
+
+This application utilizes the Face-API.js library to perform real-time face recognition, facial landmark detection, expression analysis, and gender prediction.
+
+#### **Features:**
+- **Face Recognition:** Upload a reference image and match faces in real-time using your webcam. The Face-API.js library's `FaceMatcher` class creates a model from the reference image to match faces detected in the video feed.
+- **Expression Detection:** Analyze facial expressions and display probabilities for various emotions such as happiness, sadness, anger, surprise, and more using pre-trained models.
+- **Gender Prediction:** Estimate the gender of detected faces with a confidence score using Face-API.js’s gender detection model.
+- **User-Friendly Interface:** Intuitive UI for uploading images, viewing real-time results, and analyzing face metrics.
+
+### 3. ZIP File Matching Image Extractor App
+
+This utility application simplifies the process of finding and extracting images that match a reference face from a ZIP file. Users can upload a ZIP file containing multiple images, detect faces, and create a new ZIP file containing only the matching images.
+
+#### **Features:**
+- **Reference Image Upload:** Upload a reference image to create a face matcher model for comparison.
+- **ZIP File Processing:** Upload a ZIP file containing multiple images for batch analysis.
+- **Matching Image Extraction:** Identify and extract images that match the reference face into a new downloadable ZIP file.
+- **Progress Indicator:** A visual progress bar informs users of the face matching process.
+
+## Navigation
+The dashboard page serves as the central hub for accessing these applications. The menu provides direct links to:
+- **Face Recognition, Expression, and Gender Detection App**
+- **ZIP File Matching Image Extractor App**
+
 
 ## How to Navigate
 - **Index Page:** Facial recognition login system.

@@ -99,10 +99,10 @@ const run = async () => {
       loadingEl.style.display = "none";
       faceAIData.forEach((face) => {
         const { age, gender, genderProbability, detection, descriptor } = face;
-        const genderText = `${gender} - ${
+        const genderText = `Gender: ${gender} - ${
           (Math.round(genderProbability * 100) / 100) * 100
         }%`;
-        const ageText = `${Math.round(age)} years`;
+        const ageText = `Age: ${Math.round(age)} years`;
 
         // Draw age and gender
         const textField = new faceapi.draw.DrawTextField(
@@ -117,11 +117,11 @@ const run = async () => {
           let label = bestMatch.toString();
           let similarityPercentage = (1 - bestMatch.distance) * 100;
           let options = {
-            label: `Matched ${label} || Similarity: (${similarityPercentage.toFixed(2)}%)`,
+            label: `Face Matched ${label} || Similarity: (${similarityPercentage.toFixed(2)}%)`,
             boxColor:'green',
           };
           if (label.includes("unknown")) {
-            options = { label: "Unknown person",
+            options = { label: "Face doesn't match",
               boxColor: "red" 
              };
           }

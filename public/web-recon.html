@@ -3,31 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Cam Face recon</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Web Cam Face Recognition</title>
+    <link rel="stylesheet" href="recon-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
-      <div id="image-upload">
-        <h4>Upload which person needs to be recognized:</h4>
+    <nav class="menu">
+      <a href="dashboard.html">Home</a>
+      <a href="./web-recon.html" class="active">Face Recon App</a>
+      <a href="./zipupload.html">Zip Image Sorting App</a>
+    </nav>
+    <div class="content-wrapper">
+      <div id="image-upload" class="card">
+        <h4>Upload Reference Image</h4>
         <input type="file" id="referenceImageUpload" />
       </div>
-      <div id="loading">
-        <h2 >Please wait for your facial recognition,the AI models are loading...</h1>
+      <div id="loading" class="card">
+        <h2>Loading AI models...</h2>
+        <div class="loader"></div>
       </div>
-      <div id="face-matcher-succes" class="card card-1">
-        <h4>Succesfully loaded Image.</h4>
+      <div id="face-matcher-succes" class="card card-success">
+        <h4>Image Successfully Loaded</h4>
       </div>
-      <div id="face-matcher-failed" class="card card-2">
-        <h4>No face detected in the uploaded image.</h4>
+      <div id="face-matcher-failed" class="card card-error">
+        <h4>No face detected in the uploaded image</h4>
       </div>
-      <!-- canvas and videoEl -->
       <div id="container"> 
         <canvas id="canvas"></canvas> 
-        <video id="video-feed" height="480px" width="640px" autoplay></video>
+        <video id="video-feed" height="480" width="640" autoplay></video>
       </div>
+    </div>
   </main>
-      <script src="./face-api.min.js"></script>
-      <script src="./scripts.js"></script>
+  <script src="./face-api.min.js"></script>
+  <script src="./recon-scripts.js"></script>
 </body>
 </html>
+

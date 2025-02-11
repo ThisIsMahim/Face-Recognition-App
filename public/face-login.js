@@ -1,17 +1,20 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const startLoginBtn = document.getElementById("start-login-btn");
+    const initialSection = document.getElementById("initial-section");
     const registerSection = document.getElementById("register-section");
     const loginSection = document.getElementById("login-section");
     const registerBtn = document.getElementById("register-btn");
+    const reRegisterBtn = document.getElementById("reRegister-btn");
     const loginBtn = document.getElementById("login-btn");
     const registerVideo = document.getElementById("register-video");
     const loginVideo = document.getElementById("login-video");
     const statusMsg = document.getElementById("status");
+    const loader = document.getElementById("loader"); // Loader element
 
     await loadModels(); // Ensure models are loaded before capturing faces
 
     startLoginBtn.addEventListener("click", function () {
-        startLoginBtn.style.display = "none"; // Hide the button
+        initialSection.style.display = "none"; // Hide the button
 
         let storedData = localStorage.getItem("faceDescriptors");
         if (storedData) {
@@ -27,8 +30,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     registerBtn.addEventListener("click", async function () {
         console.log("Registering face...");
+        showLoader(true); // Show loader
 
         const descriptor = await captureFace(registerVideo);
+        
+        showLoader(false); // Hide loader
+
         if (descriptor) {
             console.log("Captured Face Descriptor:", descriptor);
             localStorage.setItem("faceDescriptors", JSON.stringify(Array.from(descriptor))); // Convert to array and store
@@ -45,11 +52,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
+    reRegisterBtn.addEventListener("click",async function(){
+        localStorage.removeItem("faceDescriptors");
+        loginSection.classList.add("hidden");
+        registerSection.classList.remove("hidden");
+        showMessage("Register a new face!","black")
+        startWebcam(registerVideo);
+    })
+
+
     loginBtn.addEventListener("click", async function () {
         console.log("Attempting login...");
+        showLoader(true); // Show loader
 
         let storedData = localStorage.getItem("faceDescriptors");
         if (!storedData) {
+            showLoader(false);
             showMessage("No registered face found! Register first.", "red");
             return;
         }
@@ -58,6 +76,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Stored Descriptor:", storedDescriptors);
 
         const capturedDescriptor = await captureFace(loginVideo);
+        showLoader(false); // Hide loader
+
         if (!capturedDescriptor) {
             showMessage("No face detected! Try again.", "red");
             return;
@@ -111,6 +131,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     function showMessage(msg, color) {
         statusMsg.innerText = msg;
         statusMsg.style.color = color;
+    }
+
+    function showLoader(show) {
+        loader.style.display = show ? "block" : "none"; // Show or hide loader
     }
 
     function stopWebcam() {

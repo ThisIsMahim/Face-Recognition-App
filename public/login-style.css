@@ -16,9 +16,24 @@ body {
     transform: translateY(0);
 }
 
+#loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.621);
+    padding: 15px;
+    border-radius: 10px;
+}
+
 /* Video Border */
 video {
     border: 3px solid #3498db;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+

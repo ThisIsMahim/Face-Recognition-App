@@ -2,22 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Face Matcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Matcher - ZIP Image Sorting</title>
     <script defer src="face-api.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-      integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
-      integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="zipUpload.js"></script>
     <link rel="stylesheet" href="zipUpload-style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav class="menu">
@@ -25,30 +17,32 @@
       <a href="./web-recon.html">Face Recon App</a>
       <a href="./zipupload.html" class="active">Zip Image Sorting App</a>
     </nav>
-    <div id="face-matcher-succes" class="successCard card-1">
-      <h4>Succesfully loaded Image.</h4>
-    </div>
-    <div id="face-matcher-failed" class="successCard card-2">
-      <h4>No face detected in the uploaded image.</h4>
-    </div>
     <div class="container">
-      <label for="referenceImageUpload" class="label-file"
-        >Upload Reference Image</label
-      >
-      <input type="file" id="referenceImageUpload" accept="image/*" />
-      <label for="zipUpload" class="label-file">Upload ZIP with Images</label>
-      <input type="file" id="zipUpload" accept=".zip" />
-      <input
-        type="text"
-        id="zipFileName"
-        placeholder="Enter name for new ZIP file"
-      />
-      <button id="searchAndCreateZip">Search Image and Create ZIP</button>
+      <h1>Face Matcher - ZIP Image Sorting</h1>
+      <div id="face-matcher-success" class="notification success">
+        <p>Successfully loaded image.</p>
+      </div>
+      <div id="face-matcher-failed" class="notification error">
+        <p>No face detected in the uploaded image.</p>
+      </div>
+      <div class="upload-section">
+        <label for="referenceImageUpload" class="btn btn-primary">Upload Reference Image</label>
+        <input type="file" id="referenceImageUpload" accept="image/*" />
+        <label for="zipUpload" class="btn btn-secondary">Upload ZIP with Images</label>
+        <input type="file" id="zipUpload" accept=".zip" />
+      </div>
+      <input type="text" id="zipFileName" placeholder="Enter name for new ZIP file" />
+      <button id="searchAndCreateZip" class="btn btn-success">Search Image and Create ZIP</button>
       <div id="loadingBarContainer">
         <div id="loadingBar"></div>
       </div>
       <div id="matchingImages"></div>
-      <button id="downloadZip">Download ZIP</button>
+      <button id="downloadZip" class="btn btn-primary">Download ZIP</button>
+    </div>
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
+      <p>Processing...</p>
     </div>
   </body>
 </html>
+
